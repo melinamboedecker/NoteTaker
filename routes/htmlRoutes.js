@@ -14,8 +14,8 @@ module.exports = (app) => {
         res.sendFile(path.join(__dirname, '../public/notes.html'));
     });
 
-    //if no matching code foute is found default to home
-    // app.get('*', (req, res) => {
-    //     res.sendFile(path.join(__dirname, '../public/index.html'));
-    // });
+    // if no matching code foute is found default to home
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../public/index.html'));
+    });
 }
