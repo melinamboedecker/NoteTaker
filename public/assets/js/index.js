@@ -89,6 +89,7 @@ console.log('&&&&&&&&&&&&&&&&&&7')
   }
 
   deleteNote(noteId).then(() => {
+    console.log('++ ++ ++ ++ ++')
     getAndRenderNotes();
     renderActiveNote();
   });
