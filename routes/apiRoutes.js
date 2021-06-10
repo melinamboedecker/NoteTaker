@@ -1,19 +1,25 @@
 //LOAD DATA
 const fs = require("fs");
-const database = JSON.parse(fs.readFileSync("./db/db.json/"));
+
 const path = require('path');
 const uniqid = require('uniqid');
 
 module.exports = (app) => {
     // => API GET requests
     app.get('/api/notes', (req, res) => {
-        res.json(database);
-    })
+        fs.readFile("./db/db.json/", "utf8", (err,data) => {
+            if (err) {
+                throw err;
+            }
+            return res.json(JSON.parse(data));
+        });
+    });
 
     //API POST requests
     app.post('/api/notes', (req, res) => {
         const note = req.body;
         note.id = uniqid();
+        const database = JSON.parse(fs.readFileSync("./db/db.json/"));
         database.push(note);
         console.log(database);
         fs.writeFileSync('./db/db.json', JSON.stringify(database));
