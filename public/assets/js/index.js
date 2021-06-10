@@ -52,8 +52,6 @@ const deleteNote = (id) =>
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
-console.log("%%%%%%%%%%%%%%%%%%%%%%5")
-console.log(activeNote.id);
   if (activeNote.id) {
     noteTitle.value = activeNote.title;
     noteText.value = activeNote.text;
@@ -81,15 +79,11 @@ const handleNoteDelete = (e) => {
 
   const note = e.target;
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
-  console.log(noteId)
-console.log('&&&&&&&&&&&&&&&&&&7')
-  console.log(activeNote.id)
   if (activeNote.id === noteId) {
     activeNote = {};
   }
 
   deleteNote(noteId).then(() => {
-    console.log('++ ++ ++ ++ ++')
     getAndRenderNotes();
     renderActiveNote();
   });
