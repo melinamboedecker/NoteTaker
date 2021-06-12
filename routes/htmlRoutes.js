@@ -8,6 +8,7 @@ module.exports = (app) => {
 
     app.get('/', (req, res) => {
         // res.sendFile(path.join(__dirname, 'public/index.html'));
+        console.log("hit line 11 in html")
         res.json(path.join(__dirname, './public/index.html'));
     });
 

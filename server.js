@@ -10,10 +10,9 @@ app.use(express.json());
 app.use(express.static(__dirname + '/public'));
 
 
-app.use("/", "./routes/htmlroutes.js")
-app.use("/api", './routes/apiroutes.js')
-// require()(app);
-// require('')(app);
+
+require(path.join(__dirname, './routes/apiroutes'))(app);
+require('./routes/htmlroutes')(app);
 
 app.listen(PORT, () => {
     console.log(`App listening on PORT: ${PORT}`);
